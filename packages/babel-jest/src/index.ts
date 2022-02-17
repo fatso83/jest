@@ -270,11 +270,6 @@ export const createTransformer: TransformerCreator<
   };
 };
 
-const transformer: SyncTransformer<TransformOptions> = {
-  ...createTransformer(),
-  // Assigned here so only the exported transformer has `createTransformer`,
-  // instead of all created transformers by the function
-  createTransformer,
-};
+const transformer: SyncTransformer<TransformOptions> = createTransformer();
 
 export default transformer;

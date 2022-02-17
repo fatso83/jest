@@ -146,9 +146,9 @@ export type Transformer<OptionType = unknown> =
   | SyncTransformer<OptionType>
   | AsyncTransformer<OptionType>;
 
-export type TransformerCreator<OptionType = unknown> = (
+export type TransformerCreator<Type = keyof 'sync'|'async', OptionType = unknown> = (
   options?: OptionType,
-) => Transformer<OptionType>;
+) =>  Type == 'sync'? SyncTransformer<OptionType> : AsyncTransformer<OptionType>
 
 /**
  * Instead of having your custom transformer implement the Transformer interface
